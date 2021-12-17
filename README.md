@@ -6,44 +6,43 @@
 BGP is a catalog boardgame that allows user to find the perfect game for the perfect moment.
 
 ## USER Views
-​
+
 **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 
-​
 **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-​
+
 **Index** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-​
+
 **Sign-up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-​
+
 **Log-in** - As a user I want to be able to log in on the webpage so that I can get back to my account
-​
+
 **Log-out** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-​
+
 **Profile** - As a user I want to be able to see my profile and edit it
-​
+
 **Game Collection** - As a user I want to be able to see my list of plants
-​
+
 **Add Game** - The user can add a board game to his collection
-​
+
 **See Game** - The user can see is's collection
-​
+
 **Delete Game** - The user can delete games from the collection.
-​
+
 **Update Game** - The user can update games from the collection.
-​
+
 ## BACKLOG
-​
+
 **Shopping points** - The user will be able to see the shopping points.
 
 **Let's play together** - The user can find people to play with.
-​
+
 **Share you experience** - The user can find for tips or counsel about the games.
 
 **See related games** - Related games per theme or tags at will.
-​
+
 ## Routes
-​
+
 | Name            | Method | Endpoint                      | Description                                      | Body                                  | Redirects       |
 | --------------- | ------ | ----------------------------- | ------------------------------------------------ | ------------------------------------- | --------------- |
 | Home            | GET    | /                             | See the main page                                |                                       |                 |
@@ -61,9 +60,9 @@ BGP is a catalog boardgame that allows user to find the perfect game for the per
 | game edit form | GET    | /collection/gameId/edit          | See edit form with game's preloaded information |                                       |                 |
 | game edit      | POST   | /userid/collection/gameId/edit   | Add game's new information                      |                                        | /collection/gameId |
 | game delete    | POST   | /userid/collection/gameId/delete | Delete game from user's collection                 |                                       | /collection         |
-​
+
 ## Models
-​
+
 Game model
 
 ```js
