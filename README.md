@@ -7,25 +7,25 @@ BGP is a catalog boardgame that allows user to find the perfect game for the per
 
 ## USER Views
 
-**404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
+**404** - The user can see a 404 page when a page does not exist.
 
-**500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
+**500** - the User can see an error page when there is a server problem.
 
-**Index** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
+**Index** - the User can access the homepage with login and signup
 
-**Sign-up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+**Sign-up** - the User can sign up on the webpage.
 
-**Log-in** - As a user I want to be able to log in on the webpage so that I can get back to my account
+**Log-in** - the User can log in on the webpage.
 
-**Log-out** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
+**Log-out** - the User can log out from the webpage.
 
-**Profile** - As a user I want to be able to see my profile and edit it
+**Profile** - the User can see the profile with favs and edit, create and remove
 
-**Game Collection** - As a user I want to be able to see my list of plants
+**Game Collection** - The user can see the global game collection.
 
-**Add Game** - The user can add a board game to his collection
+**Add Game** - The user can add a board game to Its collection.
 
-**See Game** - The user can see is's collection
+**See Game** - The user can see Its collection.
 
 **Delete Game** - The user can delete games from the collection.
 
@@ -71,9 +71,9 @@ Game model
     Year: String,
     Rating: String,
     Description: String,
-    Number of players: String,
+    Number_of_players: String,
     Img: String,
-    Playing time: String,
+    Playing_time: String,
     Difficulty: String,  
 }
 ```
@@ -87,11 +87,3 @@ User model
     Age: Number,
 }
 ```
-
-### Github project
-
-### Git
-
-### Wireframes
-
-### Slides
