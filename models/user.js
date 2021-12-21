@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+  nickname: {
+    type: String,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,
@@ -10,6 +14,10 @@ const userSchema = new mongoose.Schema({
   hashedPassword: {
     type: String,
     required: [true, 'password is required'],
+  },
+  age: {
+    type: Number,
+    min: 18,
   },
 });
 
