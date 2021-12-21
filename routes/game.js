@@ -1,24 +1,24 @@
 const express = require('express');
 const async = require('hbs/lib/async');
 
-const Course = require('../models/course');
+const Game = require('../models/game');
 const Favorite = require('../models/favorite');
 
-function courseRoutes() {
+function gameRoutes() {
   const router = express.Router();
 
   // domain/course/add
   router.get('/add', (req, res) => {
-    res.render('course/add.hbs');
+    res.render('game/add.hbs');
   });
 
   // domain/course/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
     try {
-      const course = await Course.findById(id);
+      const game = await Game.findById(id);
 
-      res.render('course/detail.hbs', { course });
+      res.render('game/detail.hbs', { game });
     } catch (e) {
       console.log('e', e);
       next(e);
@@ -29,18 +29,18 @@ function courseRoutes() {
     const { id } = req.params;
 
     try {
-      const course = await Course.findById(id);
-      res.render('course/edit.hbs', { course });
+      const game = await Game.findById(id);
+      res.render('game/edit.hbs', { game });
     } catch (e) {
       next(e);
     }
   });
 
   router.post('/', async (req, res, next) => {
-    const { title, description, price, country, image, duration } = req.body;
+    const { name, description, price, country, image, duration } = req.body;
 
     try {
-      await Course.create({
+      await Game.create({
         title,
         description,
         price,

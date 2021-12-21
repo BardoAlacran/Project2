@@ -1,7 +1,7 @@
 const express = require('express');
 const { isLoggedIn } = require('../middlewares');
 
-const Course = require('../models/course');
+const Game = require('../models/game');
 const Favorite = require('../models/favorite');
 
 function baseRoutes() {
@@ -11,28 +11,20 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      const courses = await Course.find();
+      const games = await Game.find();
       const favoritesByUser = await Favorite.find({
         user: user._id,
       });
 
-      const courseWithCurrency = courses.map(course => {
-        let currency;
-        if (course.country === 'spain') {
-          currency = '€';
-        } else {
-          currency = '$';
-        }
-
-        const newCourse = {
-          ...course.toObject(),
+        const newGame = {
+          ...game.toObject(),
           // currency: currency,
-          isFavorite: favoritesByUser.some(({ course: favCourse }) => favCourse.toString() === course._id.toString()),
+          isFavorite: favoritesByUser.some(({ game: favGame }) => favGame.toString() === game._id.toString()),
           currency,
         };
-        return newCourse;
+        return newGame;
       });
-      res.render('home.hbs', { name: user ? user.email : 'Anónimo', courses: courseWithCurrency });
+      res.render('home.hbs', { name: user ? user.email : 'Anónimo'});
     } catch (e) {
       next(e);
     }
@@ -42,7 +34,7 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      const favorites = await Favorite.find({ user: user._id }).populate('course');
+      const favorites = await Favorite.find({ user: user._id }).populate('game');
 
       res.render('profile.hbs', { favorites });
     } catch (error) {
