@@ -5,7 +5,7 @@
 ## Description
 BGP is a catalog boardgame that allows user to find the perfect game for the perfect moment.
 
-## USER Views
+## USER stories
 
 **404** - The user can see a 404 page when a page does not exist.
 
