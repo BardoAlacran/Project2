@@ -16,18 +16,17 @@ const gameSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true;
+    required: true,
   },
   image: {
     type: String,
     /*default: String*/
   },
   numOfPlayers: {
-    type: Number,
-    min: 1,
+    type: String,
   },
   playingTime: {
-    type: Number,
+    type: String,
   },
   difficulty: {
     type: String, enum: ["baby","easy", "medium", "hard", "extrachallenging"]

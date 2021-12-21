@@ -11,7 +11,7 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      const games = await .find();
+      const games = await Game.find();
       const favoritesByUser = await Favorite.find({
         user: user._id,
       });
