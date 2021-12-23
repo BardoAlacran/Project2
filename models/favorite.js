@@ -8,14 +8,14 @@ const favoriteSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  course: {
+  game: {
     type: Schema.Types.ObjectId,
-    ref: 'Course',
+    ref: 'Game',
     required: true,
   },
 });
 
-favoriteSchema.index({ user: 1, course: 1 }, { unique: true });
+favoriteSchema.index({ user: 1, game: 1 }, { unique: true });
 
 const Favorite = mongoose.model('Favorite', favoriteSchema);
 
