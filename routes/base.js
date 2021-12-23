@@ -1,14 +1,14 @@
 const express = require('express');
-//const { isLoggedIn } = require('../middlewares');
+const { isLoggedIn } = require('../middlewares');
 
 const Game = require('../models/game');
-//const Favorite = require('../models/favorite');
+const Favorite = require('../models/favorite');
 
 function baseRoutes() {
   const router = express.Router();
 
   router.get('/', async (req, res, next) => {
-    //const user = req.session.currentUser;
+    const user = req.session.currentUser;
 
     try {
       const games = await Game.find();
@@ -61,7 +61,8 @@ function baseRoutes() {
     // } catch (error) {
     //   next(error);
     // }
-
-}
-
+    
+})
+return router;
+};
 module.exports = baseRoutes;
