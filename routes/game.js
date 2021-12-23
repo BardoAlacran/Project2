@@ -98,4 +98,4 @@ function gameRoutes() {
   return router;
 }
 
-module.exports = courseRoutes;
+module.exports = gameRoutes;
