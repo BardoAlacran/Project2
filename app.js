@@ -40,7 +40,7 @@ function setupApp() {
 
   app.use('/auth', authRoutes());
 
-  app.use('/course', isLoggedIn, courseRoutes());
+  app.use('/course', courseRoutes());
 
   app.use((req, res) => {
     console.log('404');

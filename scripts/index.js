@@ -30,39 +30,19 @@ const games = [
     numOfPlayers: '2 - 6',
     playingTime: '120 minutes',
     difficulty: 'easy'
-  },
-  {name: '',
-    year: 1995,
-    rating: 4,
-    description: '',
-    image: '',
-    numOfPlayers: '',
-    playingTime: '',
-    difficulty: ''
-  },
-  {name: '',
-    year: 1995,
-    rating: 4,
-    description: '',
-    image: '',
-    numOfPlayers: '',
-    playingTime: '',
-    difficulty: ''
-  }
-
-  
+  },  
 ];
 
 mongoose
-  .connect('mongodb://localhost:27017/course-db')
+  .connect('mongodb://localhost:27017/game-db')
   .then(() => {
-    return Course.deleteMany({});
+    return Game.deleteMany({});
   })
   .then(() => {
-    return Course.insertMany(courses);
+    return Game.insertMany(games);
   })
-  .then(courses => {
-    console.log(`${courses.length} cursos insertados con exito`);
+  .then(games => {
+    console.log(`${games.length} juegos insertados con exito`);
   })
   .then(() => {
     return mongoose.connection.close();
