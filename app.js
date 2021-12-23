@@ -40,7 +40,7 @@ function setupApp() {
 
   app.use('/auth', authRoutes());
 
-  app.use('/game', gameRoutes());
+  app.use('/game', isLoggedIn, gameRoutes());
 
   app.use((req, res) => {
     console.log('404');

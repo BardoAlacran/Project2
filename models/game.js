@@ -29,8 +29,9 @@ const gameSchema = new mongoose.Schema({
     type: String,
   },
   difficulty: {
-    type: String, enum: ["baby","easy", "medium", "hard", "extrachallenging"]
-  }
+    type: String,
+    enum: ['baby', 'easy', 'medium', 'hard', 'extrachallenging'],
+  },
 });
 
 const Game = mongoose.model('Game', gameSchema);

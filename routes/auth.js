@@ -21,6 +21,7 @@ function authRoutes() {
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
+    console.log(email, password);
     try {
       await User.create({ email, hashedPassword });
 
@@ -30,6 +31,7 @@ function authRoutes() {
         return res.render('auth/sign-up', { errorMessage: e.message });
       }
       if (e.name === 'MongoServerError' && e.code === 11000) {
+        console.log(e);
         return res.render('auth/sign-up', { errorMessage: 'email already taken' });
       }
       next(e);
@@ -56,7 +58,7 @@ function authRoutes() {
           _id,
           email,
         };
-        res.redirect('/');
+        return res.redirect('/');
       }
       return res.render('auth/login', { errorMessage: 'Password incorrect' });
     } catch (e) {
