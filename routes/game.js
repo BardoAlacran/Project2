@@ -8,10 +8,27 @@ function gameRoutes() {
   const router = express.Router();
 
   // domain/game/add
-  router.get('/add', (req, res) => {
-    res.render('game/add.hbs');
+  router.get('/add', async (req, res, next) => {
+    try {
+      res.render('game/add');
+    } catch (error) {
+      console.error('Error while creating the movie', error);
+      next(error);
+    }
   });
 
+  router.post('/add', async (req, res, next) => {
+    try {
+      //res.send(req.body);
+      const { name, image, description, rating } = req.body;
+      const newGame = await Game.create({ name, image, description, rating });
+      res.redirect('/games');
+    } catch (error) {
+      console.error('Error while sending game to DB', error);
+      res.render('/');
+      next(error);
+    }
+  });
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params;

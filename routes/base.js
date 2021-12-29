@@ -61,8 +61,8 @@ function baseRoutes() {
     // } catch (error) {
     //   next(error);
     // }
-    
-})
-return router;
-};
+  });
+  return router;
+}
+
 module.exports = baseRoutes;
