@@ -61,15 +61,8 @@ function baseRoutes() {
     // } catch (error) {
     //   next(error);
     // }
-<<<<<<< HEAD
-  });
-  return router;
-}
-
-=======
     
 })
 return router;
 };
->>>>>>> bf67debd2284c7cec6611ad277f75aac549b9f56
 module.exports = baseRoutes;
