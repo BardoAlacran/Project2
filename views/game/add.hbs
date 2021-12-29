@@ -3,7 +3,7 @@
     <div class="flex-grow">
       <p class="font-sans text-base">Hola:</p>
       <h1 class="text-3xl font-bold">
-        Ale
+        {{this.email}}
       </h1>
     </div>
     <div class="border border-gray-400 rounded-full p-2 border-solid">
@@ -24,46 +24,38 @@
     </div>
   </header>
   <div class="mt-4">
-    <h1 class="text-lg font-bold">Add course</h1>
-    <form class="flex flex-col gap-y-4 mt-4" method="POST" action="/course">
-      <label for="title">Title</label>
+    <h1 class="text-lg font-bold">Add game</h1>
+    <form class="flex flex-col gap-y-4 mt-4" method="POST" action="/game">
+      <label for="title">Name</label>
       <input
         class="p-4 rounded-xl border border-solid border-gray-400"
         type="text"
-        name="title"
-        id="title"
+        name="name"
+        id="name"
         placeholder="write your title"
       />
-      <label for="description">Description</label>
+      <label for="year">Year</label>
       <textarea
         class="p-4 rounded-xl border border-solid border-gray-400"
+        name="year"
+        id="year"
+        placeholder="which year was it released?"
+      ></textarea>
+      <label for="rating">Rating</label>
+      <input
+        class="p-4 rounded-xl border border-solid border-gray-400"
+        type="text"
+        name="rating"
+        id="rating"
+        placeholder="type any rating from 0 min to 5 max"
+      />
+      <label for="description">Description</label>
+      <input
+        class="p-4 rounded-xl border border-solid border-gray-400"
+        type="text"
         name="description"
         id="description"
-        placeholder="write your description"
-      ></textarea>
-      <label for="duration">Duration</label>
-      <input
-        class="p-4 rounded-xl border border-solid border-gray-400"
-        type="text"
-        name="duration"
-        id="duration"
-        placeholder="write your duration"
-      />
-      <label for="price">Price</label>
-      <input
-        class="p-4 rounded-xl border border-solid border-gray-400"
-        type="text"
-        name="price"
-        id="price"
-        placeholder="write your price"
-      />
-      <label for="country">Country</label>
-      <input
-        class="p-4 rounded-xl border border-solid border-gray-400"
-        type="text"
-        name="country"
-        id="country"
-        placeholder="write your country"
+        placeholder="write a short description of the game"
       />
       <label for="image">Image path</label>
       <input
@@ -72,6 +64,33 @@
         name="image"
         id="image"
         placeholder="write your image path"
+      />
+
+      <label for="playingTime"> Playing Time</label>
+      <input
+        class="p-4 rounded-xl border border-solid border-gray-400"
+        type="text"
+        name="playingTime"
+        id="playingTime"
+        placeholder="how many minutes will a game last?"
+      />
+
+      <label for="numOfPlayers">Numbers of players</label>
+      <input
+        class="p-4 rounded-xl border border-solid border-gray-400"
+        type="text"
+        name="numOfPlayers"
+        id="numOfPlayers"
+        placeholder="How many players can play the game?"
+      />
+
+      <label for="difficulty">Difficulty</label>
+      <input
+        class="p-4 rounded-xl border border-solid border-gray-400"
+        type="text"
+        name="difficulty"
+        id="difficulty"
+        placeholder="Pick one of these options: baby/easy/medium/hard/extrachallenging"
       />
       <button type="submit" class="btn" href="/">Submit</button>
     </form>

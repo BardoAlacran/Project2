@@ -9,7 +9,7 @@ function gameRoutes() {
 
   // domain/game/add
   router.get('/add', (req, res) => {
-    res.render('game/add.hbs');
+    res.render('game/add');
   });
 
   // domain/game/:id
