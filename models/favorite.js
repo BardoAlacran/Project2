@@ -12,10 +12,11 @@ const favoriteSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Game',
     required: true,
+    unique: true,
   },
 });
 
-favoriteSchema.index({ user: 1, game: 1 }, { unique: true });
+favoriteSchema.index({ user: 1, game: 1 });
 
 const Favorite = mongoose.model('Favorite', favoriteSchema);
 
