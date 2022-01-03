@@ -12,6 +12,28 @@ function gameRoutes() {
     res.render('game/add.hbs');
   });
 
+  router.post('/add', async (req, res, next) => {
+    try {
+      // res.send(req.body);
+      const { name, year, image, description, rating, playingTime, numOfPlayers, difficulty } = req.body;
+      const newGame = await Game.create({
+        name,
+        year,
+        image,
+        description,
+        rating,
+        playingTime,
+        numOfPlayers,
+        difficulty,
+      });
+      res.redirect('/');
+    } catch (error) {
+      console.error('Error while sending game to DB', error);
+      res.render('/');
+      next(error);
+    }
+  });
+  
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
@@ -60,6 +82,7 @@ function gameRoutes() {
   });
 
   // /game/:id/favorite
+
   router.post('/:id/favorite', async (req, res, next) => {
     const { id: gameId } = req.params;
     const { _id: userId } = req.session.currentUser;
@@ -75,7 +98,10 @@ function gameRoutes() {
       next(error);
     }
   });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 963c946b68efb6e95ff8ebd3cef56b413d4c9154
   return router;
 }
 
