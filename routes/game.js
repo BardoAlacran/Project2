@@ -19,7 +19,7 @@ function gameRoutes() {
 
   router.post('/add', async (req, res, next) => {
     try {
-      //res.send(req.body);
+      // res.send(req.body);
       const { name, year, image, description, rating, playingTime, numOfPlayers, difficulty } = req.body;
       const newGame = await Game.create({
         name,
@@ -86,7 +86,9 @@ function gameRoutes() {
     }
   });
 
+  */
   // /game/:id/favorite
+
   router.post('/:id/favorite', async (req, res, next) => {
     const { id: gameId } = req.params;
     const { _id: userId } = req.session.currentUser;
@@ -102,7 +104,6 @@ function gameRoutes() {
       next(error);
     }
   });
-*/
   return router;
 }
 

@@ -53,14 +53,12 @@ function baseRoutes() {
     } catch (e) {
       next(e);
     }
-
-    // try {
-    //   const favorites = await Favorite.find({ user: user._id }).populate('course');
-
-    //   res.render('profile.hbs', { favorites });
-    // } catch (error) {
-    //   next(error);
-    // }
+    /* try {
+      const favorites = await Favorite.find({ user: user._id }).populate('course');
+      res.render('profile.hbs', { favorites });
+    } catch (error) {
+      next(error);
+    } */
   });
   return router;
 }
