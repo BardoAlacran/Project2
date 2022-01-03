@@ -98,10 +98,6 @@ function gameRoutes() {
       next(error);
     }
   });
-<<<<<<< HEAD
-
-=======
->>>>>>> 963c946b68efb6e95ff8ebd3cef56b413d4c9154
   return router;
 }
 
