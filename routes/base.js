@@ -8,11 +8,12 @@ function baseRoutes() {
   const router = express.Router();
 
   router.get('/', async (req, res, next) => {
-    // const user = req.session.currentUser;
+    const user = req.session.currentUser;
 
     try {
       const games = await Game.find();
-      res.render('home', { games });
+
+      res.render('home', { games, user });
     } catch (e) {
       next(e);
     }
@@ -49,7 +50,7 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      res.render('profile');
+      res.render('profile', {user});
     } catch (e) {
       next(e);
     }
