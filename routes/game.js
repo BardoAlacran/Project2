@@ -12,7 +12,7 @@ function gameRoutes() {
     try {
       res.render('game/add');
     } catch (error) {
-      console.error('Error while creating the movie', error);
+      console.error('Error while creating the game', error);
       next(error);
     }
   });
@@ -20,15 +20,25 @@ function gameRoutes() {
   router.post('/add', async (req, res, next) => {
     try {
       //res.send(req.body);
-      const { name, image, description, rating } = req.body;
-      const newGame = await Game.create({ name, image, description, rating });
-      res.redirect('/games');
+      const { name, year, image, description, rating, playingTime, numOfPlayers, difficulty } = req.body;
+      const newGame = await Game.create({
+        name,
+        year,
+        image,
+        description,
+        rating,
+        playingTime,
+        numOfPlayers,
+        difficulty,
+      });
+      res.redirect('/');
     } catch (error) {
       console.error('Error while sending game to DB', error);
       res.render('/');
       next(error);
     }
   });
+  /*
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
@@ -92,7 +102,7 @@ function gameRoutes() {
       next(error);
     }
   });
-
+*/
   return router;
 }
 
