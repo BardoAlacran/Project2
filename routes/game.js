@@ -8,37 +8,10 @@ function gameRoutes() {
   const router = express.Router();
 
   // domain/game/add
-  router.get('/add', async (req, res, next) => {
-    try {
-      res.render('game/add');
-    } catch (error) {
-      console.error('Error while creating the game', error);
-      next(error);
-    }
+  router.get('/add', (req, res) => {
+    res.render('game/add.hbs');
   });
 
-  router.post('/add', async (req, res, next) => {
-    try {
-      //res.send(req.body);
-      const { name, year, image, description, rating, playingTime, numOfPlayers, difficulty } = req.body;
-      const newGame = await Game.create({
-        name,
-        year,
-        image,
-        description,
-        rating,
-        playingTime,
-        numOfPlayers,
-        difficulty,
-      });
-      res.redirect('/');
-    } catch (error) {
-      console.error('Error while sending game to DB', error);
-      res.render('/');
-      next(error);
-    }
-  });
-  /*
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
@@ -102,7 +75,7 @@ function gameRoutes() {
       next(error);
     }
   });
-*/
+
   return router;
 }
 
