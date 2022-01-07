@@ -58,6 +58,19 @@ function gameRoutes() {
     }
   });
 
+  
+  router.post('/:id', async (req, res, next) => {
+    const { id } = req.params;
+    const {name, year, rating, description, numOfPlayers, image, playingTime, difficulty } = req.body;
+    
+    try {
+      await Game.findByIdAndUpdate(id, { name, year, rating, description, numOfPlayers, image, playingTime, difficulty });
+      res.redirect(`/game/${id}`);
+    } catch (e) {
+      next(e);
+    }
+  });
+  
   router.post('/:id/delete', async (req, res, next) => {
     const { id } = req.params;
 
@@ -68,19 +81,6 @@ function gameRoutes() {
       next(e);
     }
   });
-
-  router.post('/:id', async (req, res, next) => {
-    const { id } = req.params;
-    const { title, price, duration, description, country, image } = req.body;
-
-    try {
-      await Game.findByIdAndUpdate(id, { title, price, duration, description, country, image });
-      res.redirect(`/game/${id}/edit`);
-    } catch (e) {
-      next(e);
-    }
-  });
-
   // /game/:id/favorite
 
   router.post('/:id/favorite', async (req, res, next) => {
