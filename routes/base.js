@@ -12,39 +12,40 @@ function baseRoutes() {
 
     try {
       const games = await Game.find();
-
+      const favoritesByUser = await Favorite.find({
+        user: user._id,
+      });
       res.render('home', { games, user });
     } catch (e) {
       next(e);
     }
-
-    // try {
-    //   const games = await Game.find();
-    //   const favoritesByUser = await Favorite.find({
-    //     user: user._id,
-    //   });
-
-    //   const courseWithCurrency = courses.map(course => {
-    //     let currency;
-    //     if (course.country === 'spain') {
-    //       currency = '€';
-    //     } else {
-    //       currency = '$';
-    //     }
-
-    //     const newCourse = {
-    //       ...course.toObject(),
-    //       // currency: currency,
-    //       isFavorite: favoritesByUser.some(({ course: favCourse }) => favCourse.toString() === course._id.toString()),
-    //       currency,
-    //     };
-    //     return newCourse;
-    //   });
-    //   res.render('home.hbs', { name: user ? user.email : 'Anónimo', courses: courseWithCurrency });
-    // } catch (e) {
-    //   next(e);
-    // }
   });
+  // try {
+  //   const games = await Game.find();
+  //   const favoritesByUser = await Favorite.find({
+  //     user: user._id,
+  //   });
+
+  //   const courseWithCurrency = courses.map(course => {
+  //     let currency;
+  //     if (course.country === 'spain') {
+  //       currency = '€';
+  //     } else {
+  //       currency = '$';
+  //     }
+
+  //     const newCourse = {
+  //       ...course.toObject(),
+  //       // currency: currency,
+  //       isFavorite: favoritesByUser.some(({ course: favCourse }) => favCourse.toString() === course._id.toString()),
+  //       currency,
+  //     };
+  //     return newCourse;
+  //   });
+  //   res.render('home.hbs', { name: user ? user.email : 'Anónimo', courses: courseWithCurrency });
+  // } catch (e) {
+  //   next(e);
+  // }
 
   router.get('/profile', async (req, res, next) => {
     const user = req.session.currentUser;
@@ -62,6 +63,16 @@ function baseRoutes() {
       next(error);
     } */
   });
+
+  router.get('/logout', async (req, res, next) => {
+    try {
+      req.session = null;
+      res.render('auth/login.hbs');
+    } catch (e) {
+      next(e);
+    }
+  });
+
   return router;
 }
 

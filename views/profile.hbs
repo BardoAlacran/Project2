@@ -1,8 +1,7 @@
 <h1>Welcome {{user.email}}!</h1>
+<h2>Here is a list of your favorite games</h2>
 <ul>
     {{#each favorites}}
     <li>{{game.name}}</li>
-    <li><img src="{{game.image}}"></li>
-    <li>{{game.rating}}</li>
     {{/each}}
 </ul>
