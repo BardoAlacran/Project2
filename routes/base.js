@@ -38,13 +38,17 @@ function baseRoutes() {
     }
   });
 
-  router.get('/logout', async (req, res, next) => {
-    try {
-      req.session = null;
-      res.render('auth/login.hbs');
-    } catch (e) {
-      next(e);
-    }
+  router.get('/logout', function (req, res) {
+    req.session.destroy(() => {
+      res.redirect('/'); // Inside a callback… bulletproof!
+    });
+  });
+
+  router.post('/logout', (req, res, next) => {
+    req.session.destroy(err => {
+      if (err) next(err);
+      res.redirect('/');
+    });
   });
 
   return router;
