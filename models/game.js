@@ -32,6 +32,10 @@ const gameSchema = new mongoose.Schema({
     type: String,
     enum: ['baby', 'easy', 'medium', 'hard', 'extrachallenging'],
   },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }
 });
 
 const Game = mongoose.model('Game', gameSchema);

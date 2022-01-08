@@ -13,10 +13,8 @@ function baseRoutes() {
 
     try {
       const games = await Game.find();
-      const idString = user._id.toString();
-      const favoritesByUser = await Favorite.find({
-        user: idString,
-      });
+      
+      
       res.render('home', { games, user });
     } catch (e) {
       next(e);
@@ -33,13 +31,14 @@ function baseRoutes() {
 
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
-      const createds = await Created.find({user: user._id}).populate('game')
+      const createds = await Created.find({user: user._id}).populate('game') // TODO remove this model and related code
       res.render('profile.hbs', { favorites, createds, user });
     } catch (e) {
       next(e);
     }
   });
 
+  // TODO remove this route
   router.get('/logout', function (req, res) {
     req.session.destroy(() => {
       res.redirect('/'); // Inside a callback… bulletproof!
