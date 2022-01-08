@@ -3,6 +3,7 @@ const { isLoggedIn } = require('../middlewares');
 
 const Game = require('../models/game');
 const Favorite = require('../models/favorite');
+const Created = require('../models/createds')
 
 function baseRoutes() {
   const router = express.Router();
@@ -32,7 +33,8 @@ function baseRoutes() {
 
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
-      res.render('profile.hbs', { favorites, user });
+      const createds = await Created.find({user: user._id}).populate('game')
+      res.render('profile.hbs', { favorites, createds, user });
     } catch (e) {
       next(e);
     }
