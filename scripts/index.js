@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Game = require('../models/game');
+const User = require('../models/user');
 
 const games = [
   {
@@ -35,11 +36,18 @@ const games = [
 
 mongoose
   .connect('mongodb://localhost:27017/game-db')
-  .then(() => {
-    return Game.deleteMany({});
+  .then(async () => {
+    await User.deleteMany({});
+    return await Game.deleteMany({});
   })
-  .then(() => {
-    return Game.insertMany(games);
+  .then(()=>{
+    return User.create({email: 'info@ironhack.com', hashedPassword: '$2a$10$XVhEZiy9YHGuxbeoJjN18ekEfVfoZAioX3HenJOPESSuLyHk7zS4W'});
+  })
+  .then((user)=>{
+    console.log(user)
+    const gamesUpdated = games.map(game => ({...game, createdBy: user._id }))
+    console.log(gamesUpdated)
+    return Game.insertMany(gamesUpdated);
   })
   .then(games => {
     console.log(`${games.length} juegos insertados con exito`);
