@@ -29,6 +29,5 @@
 
 .form-section {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: column;1.5rem
 }
