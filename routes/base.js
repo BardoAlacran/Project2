@@ -3,6 +3,7 @@ const { isLoggedIn } = require('../middlewares');
 
 const Game = require('../models/game');
 const Favorite = require('../models/favorite');
+const User = require('../models/user');
 
 
 function baseRoutes() {
@@ -33,6 +34,28 @@ function baseRoutes() {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
       
       res.render('profile.hbs', { favorites, user });
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  router.get('/profile/edit', async (req, res, next) => {
+    const user = req.session.currentUser;
+
+    try {
+      const userProfile = await User.find({user: user._id});
+      res.render('profile/edit.hbs', {userProfile})
+    } catch (e) {
+      next(e);
+    }
+  })
+  router.post('/profile/edit', async (req, res, next) => {
+    const user = req.session.currentUser;
+    const {username } = req.body;
+    
+    try {
+      await User.findByIdAndUpdate(user._id, { username });
+      res.redirect(`/profile`);
     } catch (e) {
       next(e);
     }
