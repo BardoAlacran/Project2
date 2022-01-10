@@ -45,7 +45,7 @@ mongoose
   })
   .then((user)=>{
     console.log(user)
-    const gamesUpdated = games.map(game => ({...game, createdBy: user._id }))
+    const gamesUpdated = games.map(game => ({...game, createdBy: user._id, available: 'yes'}))
     console.log(gamesUpdated)
     return Game.insertMany(gamesUpdated);
   })

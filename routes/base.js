@@ -13,7 +13,7 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      const games = await Game.find();
+      const games = await Game.find({available: 'yes'});
       
       
       res.render('home', { games, user });

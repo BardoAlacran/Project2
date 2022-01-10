@@ -73,7 +73,7 @@ function gameRoutes() {
     const { id } = req.params;
 
     try {
-      await Game.findByIdAndDelete(id);
+      await Game.findByIdAndUpdate(id, {available: 'no'});
       res.redirect('/');
     } catch (e) {
       next(e);

@@ -36,6 +36,10 @@ const gameSchema = new mongoose.Schema({
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+  },
+  available: {
+    type: String,
+    enum: ['yes', 'no']
   }
 });
 
