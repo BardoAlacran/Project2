@@ -1,0 +1,27 @@
+.titleprofile {
+  margin: 2rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: large;
+  border: 4px solid black;
+  border-radius: 10px;
+  color: white;
+  background-color: black;
+}
+
+.subpro {
+  text-align: center;
+  font-weight: 600;
+  border-top: black solid 10px;
+  border-bottom: black solid 10px;
+}
+
+.listgame {
+  margin-top: 3rem;
+  text-align: center;
+  font-weight: 900;
+}
+
+.listgame li {
+  margin-top: 1.5rem;
+}

@@ -32,7 +32,7 @@ body {
 .btn {
   padding: 1rem 2rem;
   color: var(--white-color);
-  background-color: var(--primary-color);
+  background-color: black;
   border-radius: 8px;
   border-width: 0px;
   display: flex;
@@ -97,8 +97,4 @@ input {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-}
-
-.navbar-item-active {
-  color: var(--primary-color);
 }
