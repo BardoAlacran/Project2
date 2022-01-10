@@ -24,6 +24,7 @@ function gameRoutes() {
         playingTime,
         numOfPlayers,
         difficulty,
+        available: 'yes'
       });
       res.redirect('/');
     } catch (error) {
