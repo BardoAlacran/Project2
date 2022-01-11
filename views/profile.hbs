@@ -14,6 +14,18 @@
     </ul>
 </div>
 
+<div class="subpro">
+    <h2>Here is a list of your favorite games</h2>
+</div>
+
+<div class="listgame">
+    <ul>
+        {{#each creator}}
+        <li>{{name}}</li>
+        {{/each}}
+    </ul>
+</div>
+
 <nav
     class=" navbarhome fixed bottom-0 left-0 w-full flex justify-evenly border border-solid border-gray-400 rounded-t-2xl bg-white p-4 h-24 text-gray-300">
     <div class="flex flex-col items-center gap-y-2 navbar-item-active">

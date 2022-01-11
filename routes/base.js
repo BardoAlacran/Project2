@@ -39,7 +39,9 @@ function baseRoutes() {
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
       
-      res.render('profile.hbs', { favorites, user });
+      const creator = await Game.find({createdBy: user._id});
+
+      res.render('profile.hbs', { favorites, creator, user });
     } catch (e) {
       next(e);
     }
