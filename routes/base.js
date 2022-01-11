@@ -21,11 +21,17 @@ function baseRoutes() {
       next(e);
     }
   });
+  // router.post('/', async(req, res, next)=>{
+  //   const user = req.session.currentUser;
+  //   const {name, year, rating, numOfPlayers, image, playingTime, difficulty, available } = req.body;
 
-  //   res.render('home.hbs', { name: user ? user.email : 'Anónimo', courses: courseWithCurrency });
-  // } catch (e) {
-  //   next(e);
-  // }
+  //   try {
+  //     const games = Game.find({name, year, rating, numOfPlayers, image, playingTime, difficulty})
+  //     res.render('home', {games, user})
+  //   } catch (e) {
+  //     next(e)
+  //   }
+  // })
 
   router.get('/profile', async (req, res, next) => {
     const user = req.session.currentUser;

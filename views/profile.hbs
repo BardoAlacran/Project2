@@ -1,20 +1,52 @@
-<h1>Welcome {{user.email}}!</h1>
-<h2>Here is a list of your favorite games</h2>
+<div class="titleprofile">
+    <h1>Welcome {{user.email}}</h1>
+</div>
 
-<ul>
-    {{#each favorites}}
-    <li>{{game.name}}</li>
-    {{/each}}
+<div class="subpro">
+    <h2>Here is a list of your favorite games</h2>
+</div>
 
-</ul>
-<header class='flex items-center w-full mt-2 mb-4'>
-    <a href='/'>
-        <div class='border border-gray-400 rounded-full p-2 border-solid'>
-            <svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'>
-                <path fill-rule='evenodd'
-                    d='M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z'
-                    clip-rule='evenodd'></path>
+<div class="listgame">
+    <ul>
+        {{#each favorites}}
+        <li>{{game.name}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+<nav
+    class=" navbarhome fixed bottom-0 left-0 w-full flex justify-evenly border border-solid border-gray-400 rounded-t-2xl bg-white p-4 h-24 text-gray-300">
+    <div class="flex flex-col items-center gap-y-2 navbar-item-active">
+        <a href="/">
+            <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"
+                    fill="currentColor"></path>
             </svg>
-        </div>
-    </a>
-</header>
+
+            <p>Games</p>
+        </a>
+    </div>
+    <div class="navbar-item">
+        <a href="/profile">
+            <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M18.0044 14.2209C16.4247 13.4095 17.0334 14.0302 15.0941 13.2001C13.155 12.3713 12.6956 12.1003 12.6956 12.1003L12.6784 10.1991C12.6784 10.1991 13.4047 9.62995 13.6312 7.83198C14.0847 7.96748 14.2381 7.2832 14.2628 6.84604C14.2897 6.42373 14.5309 5.10743 13.9762 5.22487C14.0897 4.34604 14.1787 3.55143 14.1387 3.13073C14 1.65441 13.0112 0.112595 10.5153 0C8.39344 0.112595 7.01594 1.65537 6.87687 3.13169C6.83687 3.55239 6.91844 4.34637 7.03187 5.2268C6.4775 5.10776 6.71625 6.42664 6.74062 6.84863C6.7675 7.28578 6.9175 7.972 7.37187 7.83649C7.5975 9.63479 8.32375 10.2081 8.32375 10.2081L8.30562 12.1196C8.30562 12.1196 7.84625 12.409 5.90719 13.2378C3.96812 14.0683 4.57625 13.4098 2.99656 14.2209C0.5 15.5033 0.5 19.0299 0.5 19.0299C0.5 19.5667 0.919687 20 1.4375 20H19.5625C20.0803 20 20.5 19.5667 20.5 19.0321C20.5003 19.0299 20.5003 15.5026 18.0044 14.2209Z"
+                    fill="currentColor"></path>
+            </svg>
+
+            <p>Profile</p>
+        </a>
+    </div>
+    <div class="navbar-item">
+        <a href="/logout">
+            <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+
+            <p>Logout</p>
+        </a>
+    </div>
+</nav>

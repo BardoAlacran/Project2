@@ -1,0 +1,23 @@
+.headbox {
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.homeh1 {
+  font-size: x-small;
+  text-align: center;
+}
+
+.searchbar {
+  border-radius: 20px;
+  border: black solid 5px;
+  text-align: center;
+}
+
+.navbarhome {
+  padding: 0.5rem;
+  height: 4rem;
+  color: white;
+  background-color: black;
+  font-weight: 500;
+}
