@@ -52,11 +52,12 @@ function authRoutes() {
       if (!dbUser) {
         return res.render('auth/login', { errorMessage: 'user Not Found' });
       }
-      const { _id, hashedPassword } = dbUser;
+      const { _id, hashedPassword, username } = dbUser;
       if (bcrypt.compareSync(password, hashedPassword)) {
         req.session.currentUser = {
           _id,
           email,
+          username,
         };
         return res.redirect('/');
       }
