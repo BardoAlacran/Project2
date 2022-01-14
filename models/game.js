@@ -40,6 +40,10 @@ const gameSchema = new mongoose.Schema({
   available: {
     type: String,
     enum: ['yes', 'no']
+  },
+  isFavorite: {
+    type: Boolean,
+    default: false
   }
 });
 

@@ -11,10 +11,18 @@ function baseRoutes() {
 
   router.get('/', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
-
+    
     try {
       const games = await Game.find({available: 'yes'});
+      const favorite = await Favorite.find({ user: user._id})
+      const [ fav ] = favorite;
       
+      if (games.isFavorite) {
+        await Game.findByIdAndUpdate(games._id, {isFavorite: false});
+        await Favorite.findByIdAndRemove(fav._id)  
+      } else {
+        await Game.findByIdAndUpdate(games._id, {isFavorite: true});
+      }
       
       res.render('home', { games, user });
     } catch (e) {

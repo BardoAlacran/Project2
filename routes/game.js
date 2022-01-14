@@ -3,6 +3,7 @@ const async = require('hbs/lib/async');
 
 const Game = require('../models/game');
 const Favorite = require('../models/favorite');
+const { find } = require('../models/game');
 
 function gameRoutes() {
   const router = express.Router();
@@ -36,15 +37,28 @@ function gameRoutes() {
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params; // check correct id
+    
     try {
       const game = await Game.findById(id);
-
+      
       res.render('game/detail.hbs', { game });
     } catch (e) {
       console.log('e', e);
       next(e);
     }
   });
+  // router.get('/:name', async (req, res, next) => {
+  //   const { name } = req.params; // check correct id
+    
+  //   try {
+  //     const game = await Game.find({name: name});
+  //     const {year, rating, description, numOfPlayers, image, playingTime, difficulty } = game;
+  //     res.render('game/detail.hbs', {name, year, rating, description, numOfPlayers, image, playingTime, difficulty });
+  //   } catch (e) {
+  //     console.log('e', e);
+  //     next(e);
+  //   }
+  // });
 
   router.get('/:id/edit', async (req, res, next) => {
     const { id } = req.params;
@@ -87,16 +101,32 @@ function gameRoutes() {
     const { _id: userId } = req.session.currentUser;
 
     try {
-      const favoriteCreated = await Favorite.create({
-        user: userId,
-        game: gameId,
-      });
-
-      res.redirect('/');
+        await Favorite.create({
+          user: userId,
+          game: gameId,
+        });
+        res.redirect('/');
+      
     } catch (error) {
+      console.log(error)
       next(error);
     }
   });
+  router.post('/:id/unfavorite', async (req, res, next) => {
+    const user = req.session.currentUser;
+    const { id } = req.params
+
+    try {
+
+        await Favorite.findOneAndRemove({game: id});        
+        res.redirect('/');
+      
+    } catch (error) {
+      console.log(error)
+      next(error);
+    }
+  });
+
   return router;
 }
 
