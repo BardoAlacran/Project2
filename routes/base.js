@@ -10,7 +10,7 @@ function baseRoutes() {
 
   router.get('/', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
-
+    
     try {
       const games = await Game.find({ available: 'yes' });
       res.render('home', { games, user });
@@ -35,8 +35,9 @@ function baseRoutes() {
 
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
+      const creator = await Game.find({createdBy: user._id})
 
-      res.render('profile.hbs', { favorites, user });
+      res.render('profile.hbs', { favorites, creator, user });
     } catch (e) {
       next(e);
     }
