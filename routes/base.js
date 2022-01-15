@@ -18,18 +18,7 @@ function baseRoutes() {
       next(e);
     }
   });
-  // router.post('/', async(req, res, next)=>{
-  //   const user = req.session.currentUser;
-  //   const {name, year, rating, numOfPlayers, image, playingTime, difficulty, available } = req.body;
-
-  //   try {
-  //     const games = Game.find({name, year, rating, numOfPlayers, image, playingTime, difficulty})
-  //     res.render('home', {games, user})
-  //   } catch (e) {
-  //     next(e)
-  //   }
-  // })
-
+ 
   router.get('/profile', async (req, res, next) => {
     const user = req.session.currentUser;
 
@@ -65,10 +54,10 @@ function baseRoutes() {
     }
   });
 
-  // TODO remove this route
+
   router.get('/logout', function (req, res) {
     req.session.destroy(() => {
-      res.redirect('/'); // Inside a callback… bulletproof!
+      res.redirect('/');
     });
   });
 
