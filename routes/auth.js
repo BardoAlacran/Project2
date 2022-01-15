@@ -57,7 +57,7 @@ function authRoutes() {
         req.session.currentUser = {
           _id,
           email,
-          username
+          username,
         };
         return res.redirect('/');
       }

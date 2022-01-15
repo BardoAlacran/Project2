@@ -5,7 +5,6 @@ const Game = require('../models/game');
 const Favorite = require('../models/favorite');
 const User = require('../models/user');
 
-
 function baseRoutes() {
   const router = express.Router();
 
@@ -13,17 +12,7 @@ function baseRoutes() {
     const user = req.session.currentUser;
     
     try {
-      const games = await Game.find({available: 'yes'});
-      const favorite = await Favorite.find({ user: user._id})
-      const [ fav ] = favorite;
-      
-      if (games.isFavorite) {
-        await Game.findByIdAndUpdate(games._id, {isFavorite: false});
-        await Favorite.findByIdAndRemove(fav._id)  
-      } else {
-        await Game.findByIdAndUpdate(games._id, {isFavorite: true});
-      }
-      
+      const games = await Game.find({ available: 'yes' });
       res.render('home', { games, user });
     } catch (e) {
       next(e);
@@ -46,10 +35,8 @@ function baseRoutes() {
 
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
-      
-      const creator = await Game.find({createdBy: user._id});
 
-      res.render('profile.hbs', { favorites, creator, user });
+      res.render('profile.hbs', { favorites, user });
     } catch (e) {
       next(e);
     }
@@ -59,18 +46,19 @@ function baseRoutes() {
     const user = req.session.currentUser;
 
     try {
-      const userProfile = await User.find({user: user._id});
-      res.render('profile/edit.hbs', {userProfile})
+      const userProfile = await User.find({ user: user._id });
+      res.render('profile/edit.hbs', { userProfile });
     } catch (e) {
       next(e);
     }
-  })
+  });
   router.post('/profile/edit', async (req, res, next) => {
     const user = req.session.currentUser;
-    const {username } = req.body;
-    
+    const { username } = req.body;
+
     try {
-      await User.findByIdAndUpdate(user._id, { username });
+      const userUpdated = await User.findByIdAndUpdate(user._id, { username }, { new: true });
+      req.session.currentUser = { _id: userUpdated._id, email: userUpdated.email, username: userUpdated.username };
       res.redirect(`/profile`);
     } catch (e) {
       next(e);
