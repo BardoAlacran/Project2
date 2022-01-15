@@ -13,7 +13,7 @@ function authRoutes() {
   });
 
   router.post('/sign-up', async (req, res, next) => {
-    const { email, password, repeatedPassword } = req.body;
+    const { username, email, password, repeatedPassword } = req.body;
 
     if (password !== repeatedPassword) {
       return res.render('auth/sign-up', { errorMessage: 'Password not indentical' });
@@ -23,7 +23,7 @@ function authRoutes() {
     const hashedPassword = bcrypt.hashSync(password, salt);
     console.log(email, password);
     try {
-      await User.create({ email, hashedPassword });
+      await User.create({ username, email, hashedPassword });
 
       res.redirect('/');
     } catch (e) {
