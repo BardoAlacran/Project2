@@ -18,6 +18,17 @@
     </header>
 </div>
 
+<div class="subpro">
+    <h2>Here is a list of your Favorite games</h2>
+</div>
+
+<div class="listgame">
+    <ul>
+        {{#each favorites}}
+        <li>{{game.name}}</li>
+        {{/each}}
+    </ul>
+</div>
 
 <div class="subpro">
     <h2>Here is a list of your own games</h2>
@@ -26,7 +37,7 @@
 <div class="listgame">
     <ul>
         {{#each creator}}
-        <li>{{game.name}}</li>
+        <li>{{name}}</li>
         {{/each}}
     </ul>
 </div>

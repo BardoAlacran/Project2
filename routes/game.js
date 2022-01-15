@@ -14,6 +14,7 @@ function gameRoutes() {
   });
 
   router.post('/add', async (req, res, next) => {
+    const user = req.session.currentUser;
     try {
       const { name, year, image, description, rating, playingTime, numOfPlayers, difficulty } = req.body;
       const newGame = await Game.create({
@@ -25,7 +26,8 @@ function gameRoutes() {
         playingTime,
         numOfPlayers,
         difficulty,
-        available: 'yes'
+        available: 'yes',
+        createdBy: user._id
       });
       res.redirect('/');
     } catch (error) {

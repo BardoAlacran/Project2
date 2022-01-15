@@ -41,7 +41,7 @@ mongoose
     return await Game.deleteMany({});
   })
   .then(()=>{
-    return User.create({email: 'info@ironhack.com', hashedPassword: '$2a$10$XVhEZiy9YHGuxbeoJjN18ekEfVfoZAioX3HenJOPESSuLyHk7zS4W'});
+    return User.create({username: 'superuser',email: 'info@ironhack.com', hashedPassword: '$2a$10$XVhEZiy9YHGuxbeoJjN18ekEfVfoZAioX3HenJOPESSuLyHk7zS4W'});
   })
   .then((user)=>{
     console.log(user)
