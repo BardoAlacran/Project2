@@ -8,7 +8,7 @@ const { find } = require('../models/game');
 function gameRoutes() {
   const router = express.Router();
 
-  // domain/game/add
+  
   router.get('/add', (req, res) => {
     res.render('game/add.hbs');
   });
@@ -36,9 +36,9 @@ function gameRoutes() {
     }
   });
   
-  // domain/game/:id
+  
   router.get('/:id', async (req, res, next) => {
-    const { id } = req.params; // check correct id
+    const { id } = req.params; 
     
     try {
       const game = await Game.findById(id);
@@ -49,18 +49,6 @@ function gameRoutes() {
       next(e);
     }
   });
-  // router.get('/:name', async (req, res, next) => {
-  //   const { name } = req.params; // check correct id
-    
-  //   try {
-  //     const game = await Game.find({name: name});
-  //     const {year, rating, description, numOfPlayers, image, playingTime, difficulty } = game;
-  //     res.render('game/detail.hbs', {name, year, rating, description, numOfPlayers, image, playingTime, difficulty });
-  //   } catch (e) {
-  //     console.log('e', e);
-  //     next(e);
-  //   }
-  // });
 
   router.get('/:id/edit', async (req, res, next) => {
     const { id } = req.params;
@@ -96,7 +84,6 @@ function gameRoutes() {
       next(e);
     }
   });
-  // /game/:id/favorite
 
   router.post('/:id/favorite', async (req, res, next) => {
     const { id: gameId } = req.params;

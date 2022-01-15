@@ -45,7 +45,7 @@ function authRoutes() {
   router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
-    // check que email y password no estan vacios
+  
     try {
       const dbUser = await User.findOne({ email });
 
