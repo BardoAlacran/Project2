@@ -8,6 +8,9 @@ const { find } = require('../models/game');
 function gameRoutes() {
   const router = express.Router();
 
+
+
+
   // domain/game/add
   router.get('/add', (req, res) => {
     res.render('game/add.hbs');
