@@ -94,21 +94,25 @@ function baseRoutes() {
   });
   router.post('/profile/edit', async (req, res, next) => {
     const user = req.session.currentUser;
-    const { username } = req.body;
+    const { username, profilePic } = req.body;
 
     try {
-      const userUpdated = await User.findByIdAndUpdate(user._id, { username }, { new: true });
-      req.session.currentUser = { _id: userUpdated._id, email: userUpdated.email, username: userUpdated.username };
+      const userUpdated = await User.findByIdAndUpdate(user._id, { username, profilePic }, { new: true });
+      req.session.currentUser = {
+        _id: userUpdated._id,
+        email: userUpdated.email,
+        username: userUpdated.username,
+        profilePic: userUpdated.profilePic,
+      };
       res.redirect(`/profile`);
     } catch (e) {
       next(e);
     }
   });
 
-  // TODO remove this route
   router.get('/logout', function (req, res) {
     req.session.destroy(() => {
-      res.redirect('/'); // Inside a callback… bulletproof!
+      res.redirect('/');
     });
   });
 

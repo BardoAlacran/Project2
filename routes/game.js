@@ -8,7 +8,7 @@ const Favorite = require('../models/favorite');
 function gameRoutes() {
   const router = express.Router();
 
-  // domain/game/add
+  
   router.get('/add', (req, res) => {
     res.render('game/add.hbs');
   });
@@ -35,11 +35,19 @@ function gameRoutes() {
       next(error);
     }
   });
+<<<<<<< HEAD
 
   // domain/game/:id
   router.get('/:id', async (req, res, next) => {
     const { id } = req.params; // check correct id
 
+=======
+  
+  
+  router.get('/:id', async (req, res, next) => {
+    const { id } = req.params; 
+    
+>>>>>>> pics
     try {
       const game = await Game.findById(id);
 
