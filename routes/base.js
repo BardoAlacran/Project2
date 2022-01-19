@@ -50,7 +50,7 @@ function baseRoutes() {
           isFavorite: false,
         };
       });
-      console.log(gamesWithFav);
+
       res.render('home', { games: gamesWithFav, user });
     } catch (e) {
       next(e);
@@ -114,8 +114,8 @@ function baseRoutes() {
 
   router.post('/logout', (req, res, next) => {
     req.session.destroy(err => {
-      if (err) next(err);
       res.redirect('/');
+      if (err) next(err);
     });
   });
 

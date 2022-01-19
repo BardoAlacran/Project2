@@ -21,7 +21,7 @@ const gameSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    /*default: String*/
+    /* default: String */
   },
   numOfPlayers: {
     type: String,
@@ -39,12 +39,12 @@ const gameSchema = new mongoose.Schema({
   },
   available: {
     type: String,
-    enum: ['yes', 'no']
+    enum: ['yes', 'no'],
   },
   isFavorite: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const Game = mongoose.model('Game', gameSchema);
