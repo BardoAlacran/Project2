@@ -15,15 +15,15 @@
     <div class='mt-4'>
         <h1 class='text-lg font-bold'>You can edit your profile here</h1>
         <form class='flex flex-col gap-y-4 mt-4' method='POST' action='/profile/edit'>
+
             <label for='username'>User Name</label>
             <input class='p-4 rounded-xl border border-solid border-gray-400' type='text' name='username' id='username'
                 placeholder='username' value='{{user.username}}' />
-            <label for='username'>User Name</label>
-            <input class='p-4 rounded-xl border border-solid border-gray-400' type='text' name='email' id='username'
-                placeholder='username' value='{{user.username}}' />
-            <label for='username'>User Name</label>
-            <input class='p-4 rounded-xl border border-solid border-gray-400' type='text' name='username' id='username'
-                placeholder='username' value='{{user.username}}' />
+
+            <label for='profilePic'>Profile Pic</label>
+            <input class='p-4 rounded-xl border border-solid border-gray-400' type='text' name='profilePic'
+                id='profilePic' placeholder='Paste the URL of your pic here' value='{{user.profilePic}}' />
+
             <button type='submit' class='btn'>save changes</button>
         </form>
     </div>

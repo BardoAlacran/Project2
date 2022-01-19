@@ -13,7 +13,7 @@ function authRoutes() {
   });
 
   router.post('/sign-up', async (req, res, next) => {
-    const { username, email, password, repeatedPassword } = req.body;
+    const { username, email, password, repeatedPassword, profilePic } = req.body;
 
     if (password !== repeatedPassword) {
       return res.render('auth/sign-up', { errorMessage: 'Password not indentical' });
@@ -21,9 +21,8 @@ function authRoutes() {
 
     const salt = bcrypt.genSaltSync(saltRounds);
     const hashedPassword = bcrypt.hashSync(password, salt);
-    console.log(email, password);
     try {
-      await User.create({ username, email, hashedPassword });
+      await User.create({ username, email, hashedPassword, profilePic });
 
       res.redirect('/');
     } catch (e) {
@@ -45,19 +44,19 @@ function authRoutes() {
   router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
-  
     try {
       const dbUser = await User.findOne({ email });
 
       if (!dbUser) {
         return res.render('auth/login', { errorMessage: 'user Not Found' });
       }
-      const { _id, hashedPassword, username } = dbUser;
+      const { _id, hashedPassword, username, profilePic } = dbUser;
       if (bcrypt.compareSync(password, hashedPassword)) {
         req.session.currentUser = {
           _id,
           email,
           username,
+          profilePic,
         };
         return res.redirect('/');
       }

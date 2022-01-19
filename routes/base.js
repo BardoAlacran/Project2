@@ -10,7 +10,7 @@ function baseRoutes() {
 
   router.get('/', isLoggedIn, async (req, res, next) => {
     const user = req.session.currentUser;
-    
+
     try {
       const games = await Game.find({ available: 'yes' });
       res.render('home', { games, user });
@@ -18,13 +18,13 @@ function baseRoutes() {
       next(e);
     }
   });
- 
+
   router.get('/profile', async (req, res, next) => {
     const user = req.session.currentUser;
 
     try {
       const favorites = await Favorite.find({ user: user._id }).populate('game');
-      const creator = await Game.find({createdBy: user._id})
+      const creator = await Game.find({ createdBy: user._id });
 
       res.render('profile.hbs', { favorites, creator, user });
     } catch (e) {
@@ -44,17 +44,21 @@ function baseRoutes() {
   });
   router.post('/profile/edit', async (req, res, next) => {
     const user = req.session.currentUser;
-    const { username } = req.body;
+    const { username, profilePic } = req.body;
 
     try {
-      const userUpdated = await User.findByIdAndUpdate(user._id, { username }, { new: true });
-      req.session.currentUser = { _id: userUpdated._id, email: userUpdated.email, username: userUpdated.username };
+      const userUpdated = await User.findByIdAndUpdate(user._id, { username, profilePic }, { new: true });
+      req.session.currentUser = {
+        _id: userUpdated._id,
+        email: userUpdated.email,
+        username: userUpdated.username,
+        profilePic: userUpdated.profilePic,
+      };
       res.redirect(`/profile`);
     } catch (e) {
       next(e);
     }
   });
-
 
   router.get('/logout', function (req, res) {
     req.session.destroy(() => {
