@@ -2,10 +2,7 @@
 
   <div class="mt-4">
     <h1 class="text-lg font-bold addtitle">Add game</h1>
-    <div class="subadd">
-      <h3>I wanted to thank you for taking time from your busy schedule to help our project to grow up step by step.
-        Be as accurate as possible while adding a new game. Thanks</h3>
-    </div>
+
     <form class="flex flex-col gap-y-4 mt-4 formadd" method="POST" action="/game/add">
       <label for="title">Name</label>
       <input class="p-4 rounded-xl border border-solid border-gray-400 inputadd" type="text" name="name" id="name"
@@ -34,6 +31,10 @@
       <label for="difficulty">Difficulty</label>
       <input class="p-4 rounded-xl border border-solid border-gray-400 inputadd" type="text" name="difficulty"
         id="difficulty" placeholder="Pick one of these options: baby/easy/medium/hard/extrachallenging" />
+      <div class="subadd">
+        <h3>I wanted to thank you for taking time from your busy schedule to help our project to grow up.
+          Thanks</h3>
+      </div>
       <button type="submit" class="btn subaddbtn">Submit</button>
     </form>
   </div>

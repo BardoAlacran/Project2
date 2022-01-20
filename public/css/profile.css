@@ -9,6 +9,17 @@
   background-color: black;
 }
 
+.profileDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.profilepic {
+  border-radius: 100px;
+  height: 7rem;
+  width: 7rem;
+}
+
 .protitle {
   padding-left: 2rem;
 }
