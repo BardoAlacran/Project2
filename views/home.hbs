@@ -1,6 +1,10 @@
 <div class="container m-auto">
   <header class="flex items-center w-full mt-2 mb-3 headbox">
+    <a class="border border-gray-400 rounded-full p-2" href="/profile">
+      <img class="imgProfile" src="{{user.profilePic}}" alt="">
+    </a>
     <div class="flex-grow">
+
       <h1 class="text-3xl font-bold homeh1">
         Welcome {{user.username}}
       </h1>
@@ -14,17 +18,10 @@
     </a>
   </header>
   <section class="mb-5">
-<<<<<<< HEAD
     <form method="GET" action="/filter">
-      <input class="w-full mb-3 searchbar" type="text" placeholder="Search" name="name" />
-      <button type="submit">find</button>
+      <input class="w-full mb-3 searchbar" type="text" placeholder="Search for a boardgame" name="name" />
+      <div class="centerbu"><button class="findboard" type="submit">Search</button></div>
     </form>
-=======
-    <form class="search" action="/games/search" method="GET">
-      <input class="bar" type="text" placeholder="Search Boardgame..." name="gameName">
-    </form>
-
->>>>>>> pics
   </section>
   <main class="flex flex-col gap-y-4 myUL">
     {{#each games}}
