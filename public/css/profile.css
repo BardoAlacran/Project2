@@ -9,22 +9,34 @@
   background-color: black;
 }
 
+.subpro1 h2 {
+  margin-top: -1rem;
+  border-top: none;
+  border-bottom: none;
+}
+
 .profileDiv {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .profilepic {
   border-radius: 100px;
-  height: 7rem;
-  width: 7rem;
+  height: 6rem;
+  width: 6rem;
 }
 
 .protitle {
   padding-left: 2rem;
 }
 
-.subpro {
+.subpro1 {
+  text-align: center;
+  font-weight: 600;
+  border-left: black solid 5px;
+}
+
+.subpro2 {
   text-align: center;
   font-weight: 600;
   border-top: black solid 10px;
@@ -32,11 +44,35 @@
 }
 
 .listgame {
-  margin-top: 3rem;
-  text-align: center;
-  font-weight: 900;
+  justify-content: center;
+  font-weight: 200;
+  display: flex;
+}
+
+.picinfav {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 20px;
 }
 
 .listgame li {
-  margin-top: 1.5rem;
+  margin: 1rem 0;
+}
+
+.picandemail {
+  margin-left: 2rem;
+  justify-content: space-evenly;
+}
+
+.mailprof {
+  margin-top: 2rem;
+}
+
+.subpro1 {
+  margin-right: 1rem;
+}
+
+.mighty {
+  margin-top: 5rem;
+  font-style: italic;
 }

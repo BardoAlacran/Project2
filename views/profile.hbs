@@ -18,23 +18,31 @@
     </header>
 </div>
 <div class="profileDiv">
-    <img class="profilePic" src="{{user.profilePic}}" alt="profile pic">
+    <div class="picandemail">
+        <img class="profilePic" src="{{user.profilePic}}" alt="profile pic">
+        <p class="mailprof">Email address: {{user.email}}</p>
+        <p class="mighty">“A man can learn all of an opponent's weaknesses on that board,' said Gilt.
+            'Really?' said Vetinari, raising his eyebrows. 'Should not he be trying to learn his own?”</p>
+    </div>
+    <div class="subpro1">
+        <h2>Favourite Games</h2>
+        <div class="listgame">
+            <ul>
+                {{#each favorites}}
+                <li>{{game.name}}</li>
+                <li><img class="picinfav" src="{{game.image}}" alt=""></li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+
 </div>
 
 
-<div class="subpro">
-    <h2>Here is a list of your Favorite games</h2>
-</div>
 
-<div class="listgame">
-    <ul>
-        {{#each favorites}}
-        <li>{{game.name}}</li>
-        {{/each}}
-    </ul>
-</div>
 
-<div class="subpro">
+<div class="subpro2">
     <h2>Here is a list of your own games</h2>
 </div>
 
